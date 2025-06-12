@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dolo 650 Prescription</title>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+</head>
+<body style="text-align: center; font-family: Arial; margin-top: 50px;">
+
+  <h2>Dolo 650 Prescription</h2>
+  <p><strong>Tablet:</strong> Dolo 650</p>
+  <p><strong>Dosage:</strong> 1 tablet every 6 hours</p>
+
+  <button onclick="payNow()" style="padding: 12px 24px; font-size: 18px; margin-top: 20px;">Pay Now</button>
+
+  <script>
+    // Replace this config with your actual Firebase project config
+    var firebaseConfig = {
+      apiKey: "AIzaSyB9ererNsNonAzH0zQo_GS79XPOyCoMxr4",
+  authDomain: "waterdtection.firebaseapp.com",
+  databaseURL: "https://waterdtection-default-rtdb.firebaseio.com",
+  projectId: "waterdtection",
+  storageBucket: "waterdtection.firebasestorage.app",
+  messagingSenderId: "690886375729",
+  appId: "1:690886375729:web:172c3a47dda6585e4e1810",
+  measurementId: "G-TXF33Y6XY0"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    var database = firebase.database();
+
+    function payNow() {
+      database.ref("Vending_Machine").update({
+        Status: "1"
+      }).then(() => {
+        alert("Payment successful! Vending command sent.");
+      }).catch((error) => {
+        alert("Error: " + error.message);
+      });
+    }
+  </script>
+</body>
+</html>
